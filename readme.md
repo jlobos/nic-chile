@@ -1,5 +1,7 @@
 # nic-chile [![Build Status](https://travis-ci.org/jlobos/nic-chile.svg?branch=master)](https://travis-ci.org/jlobos/nic-chile)
 
+Dot cl domains (.cl) last registered, search and whois from nic.cl
+
 ## Install
 
 ```
