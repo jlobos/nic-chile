@@ -1,0 +1,33 @@
+{
+  "name": "nic-chile",
+  "version": "0.0.0",
+  "description": ".cl domains: last registered, search and whois from nic.cl",
+  "license": "MIT",
+  "repository": "jlobos/nic-chile",
+  "author": "Jesús Lobos <jlobitu@gmail.com> (https://jlobos.com/)",
+  "engines": {
+    "node": ">=7"
+  },
+  "scripts": {
+    "test": "standard && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "chile",
+    "domains",
+    "punto",
+    "cl",
+    "whois",
+    "nic"
+  ],
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "standard": "^10.0.2"
+  }
+}
