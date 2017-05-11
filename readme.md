@@ -1,5 +1,6 @@
-# nic-chile [![Build Status](https://travis-ci.org/jlobos/nic-chile.svg?branch=master)](https://travis-ci.org/jlobos/nic-chile)
+# nic-chile
 
+[![Build Status](https://travis-ci.org/jlobos/nic-chile.svg?branch=master)](https://travis-ci.org/jlobos/nic-chile)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jlobos/nic-chile.svg)](https://greenkeeper.io/)
 
 Dot cl domains (.cl) last registered, search and whois from nic.cl
