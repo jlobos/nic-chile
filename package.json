@@ -1,6 +1,6 @@
 {
   "name": "nic-chile",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Dot cl domains (.cl) last registered, search, deleted and whois from nic.cl",
   "license": "MIT",
   "repository": "jlobos/nic-chile",
