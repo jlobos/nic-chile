@@ -31,3 +31,14 @@ test('whois', async t => {
     'c.nic.cl'
   ])
 })
+
+test('deleted', async t => {
+  t.true(Array.isArray(await cl.deleted()))
+  t.true(Array.isArray(await cl.deleted('day')))
+  t.true(Array.isArray(await cl.deleted('week')))
+})
+
+test('throws deleted', async t => {
+  const error = await t.throws(cl.deleted('error'))
+  t.is(error.message, 'Expected a string, like `day or week`')
+})

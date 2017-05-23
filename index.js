@@ -47,3 +47,22 @@ exports.whois = async domain => {
     $('div', e).eq(1).text().trim()
   )).get().filter(Boolean)
 }
+
+exports.deleted = async (time = 'day') => {
+  switch (time) {
+    case 'day': time = '1d'; break
+    case 'week': time = '1s'; break
+    default: throw new TypeError(
+      'Expected a string, like `day or week`'
+    )
+  }
+
+  const url = `https://www.nic.cl/registry/Eliminados.do?t=${time}`
+  const request = await fetch(url)
+  const $ = load(await request.text(), {normalizeWhitespace: true})
+
+  return $('.tablabusqueda td div').map((i, a) => {
+    const text = $(a).text().trim()
+    if (text !== 'inscribir') return text
+  }).get()
+}
