@@ -23,7 +23,7 @@
     "nic"
   ],
   "dependencies": {
-    "cheerio": "^0.22.0",
+    "cheerio": "^1.0.0-rc.1",
     "node-fetch": "^1.7.0"
   },
   "devDependencies": {
