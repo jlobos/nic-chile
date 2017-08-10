@@ -14,7 +14,7 @@ test('throws last domains', async t => {
 
 test('search', async t => {
   const domains = await cl.search({ q: 'nic.cl', filter: 'exacta' })
-  t.deepEqual(domains, [ 'nic.cl' ])
+  t.deepEqual(domains, ['nic.cl'])
 })
 
 test('whois', async t => {

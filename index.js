@@ -3,13 +3,20 @@ const fetch = require('node-fetch')
 
 exports.last = async (time = 'hour') => {
   switch (time) {
-    case 'hour': time = '1h'; break
-    case 'day': time = '1d'; break
-    case 'week': time = '1w'; break
-    case 'month': time = '1m'; break
-    default: throw new TypeError(
-      'Expected a string, like `hour, day, week, month`'
-    )
+    case 'hour':
+      time = '1h'
+      break
+    case 'day':
+      time = '1d'
+      break
+    case 'week':
+      time = '1w'
+      break
+    case 'month':
+      time = '1m'
+      break
+    default:
+      throw new TypeError('Expected a string, like `hour, day, week, month`')
   }
 
   const url = `http://www.nic.cl/registry/Ultimos.do?t=${time}`
@@ -19,13 +26,19 @@ exports.last = async (time = 'hour') => {
   return $('.tablabusqueda td div a').map((i, a) => $(a).text()).get()
 }
 
-exports.search = async ({ q, filter = 'exacta', buscar = 'Buscar Dominio' }) => {
+exports.search = async ({
+  q,
+  filter = 'exacta',
+  buscar = 'Buscar Dominio'
+}) => {
   const url = 'http://www.nic.cl/registry/BuscarDominio.do'
   const payload = { buscar, filtro: filter, patron: q }
 
-  const body = Object.keys(payload).map(key => (
-    `${encodeURIComponent(key)}=${encodeURIComponent(payload[key])}`
-  )).join('&')
+  const body = Object.keys(payload)
+    .map(
+      key => `${encodeURIComponent(key)}=${encodeURIComponent(payload[key])}`
+    )
+    .join('&')
   const request = await fetch(url, {
     method: 'POST',
     headers: {
@@ -43,26 +56,32 @@ exports.whois = async domain => {
   const request = await fetch(url)
   const $ = load(await request.text())
 
-  return $('.tablabusqueda td').map((i, e) => (
-    $('div', e).eq(1).text().trim()
-  )).get().filter(Boolean)
+  return $('.tablabusqueda td')
+    .map((i, e) => $('div', e).eq(1).text().trim())
+    .get()
+    .filter(Boolean)
 }
 
 exports.deleted = async (time = 'day') => {
   switch (time) {
-    case 'day': time = '1d'; break
-    case 'week': time = '1s'; break
-    default: throw new TypeError(
-      'Expected a string, like `day or week`'
-    )
+    case 'day':
+      time = '1d'
+      break
+    case 'week':
+      time = '1s'
+      break
+    default:
+      throw new TypeError('Expected a string, like `day or week`')
   }
 
   const url = `https://www.nic.cl/registry/Eliminados.do?t=${time}`
   const request = await fetch(url)
-  const $ = load(await request.text(), {normalizeWhitespace: true})
+  const $ = load(await request.text(), { normalizeWhitespace: true })
 
-  return $('.tablabusqueda td div').map((i, a) => {
-    const text = $(a).text().trim()
-    if (text !== 'inscribir') return text
-  }).get()
+  return $('.tablabusqueda td div')
+    .map((i, a) => {
+      const text = $(a).text().trim()
+      if (text !== 'inscribir') return text
+    })
+    .get()
 }
