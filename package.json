@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
-    "node-fetch": "^2.0.0"
+    "node-fetch": "^2.2.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",
